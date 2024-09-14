@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Comfortaa:wght@300..700&display=swap" rel="stylesheet">
+    <link rel="icon" type="image/png" sizes="64x64" href="images/logo.png">
+    <title>Открой мир</title>
+    <script src="index.js" defer></script>
+</head>
+<body>
+<header>
+        <span class="logo">
+            <div class="logcirc"><img src="images/LOGO3.png" oncontextmenu="return false;"></div>
+            <h2>Открой мир</h2>
+        </span>
+        <span class="login" id="login" style="display: none;">
+            <button id="login_btn">Войти</button>
+            <div class="log">
+                <form id="loginForm" method="POST">
+                    <label for="mail">Почта:</label>
+                    <input type="mail" id="mail" name="mail"><br>
+                    <label for="pwd" class="pwdlab">
+                        Пароль:
+                        <input type="password" id="pwd" name="pwd">
+                        <input type="checkbox" id="shpwd" onclick="ShowPassword()">
+                    </label><br>
+                    <input class="submit" type="submit" name="submit" value="Войти">
+                    <button class="submit" type="button" id="register_btn">Зарегистрироваться</button>
+                    <div id="loginError" style="color: red;"></div>
+                </form>
+            </div>
+        </span>
+        <span class="profile" id="profile" style="display: none;">
+            <button class="menu_butt" id="menu_butt">
+                <div class="im-cont"><img class="profile_img" src="images/profile2.png" oncontextmenu="return false;"></div>
+                <div class="triangle"></div>
+            </button>
+            <div class="profile_menu" id="profile_menu">
+                <button id="profileName"></button>
+                <button id="favourites"><div class="im-cont"><img src="images/star_fav1.png" oncontextmenu="return false;"></div>Избранные</button>
+                <button class="ThemeColor" id="ThemeColorButton">Цвет темы</button>
+                <button class="Theme display" id="ThemeButton1">Темная тема</button>
+                <button class="Theme" id="ThemeButton2">Светлая тема</button>
+                <button id="logoutButton">Выйти</button>
+            </div>
+        </span>
+    </header>
+    <div class="cont">
+        <div class="text">
+            <h1>Откройте мир впечатлений</h1>
+            <p>Находите интересные места и создавайте свои маршруты</p>
+        </div>
+    </div>
+    <main id="main">
+        <div class="buttons">
+            <div class="switch">
+                <button id="placesButton">Места</button>
+                <button id="routesButton">Маршруты</button>
+            </div>
+        </div>
+        <hr>
+        <div class="content">
+            <div class="filters" id="filters">
+                <div class="filter__toggle">
+                    <button class="filtbutt" id="filter_btn">
+                        <div class="im-cont"><img src="images/filter1.png" oncontextmenu="return false;"></div>
+                    </button>
+                </div>
+                <div class="filter__body">
+                    <div class="switchbut">
+                            <button class="active" id="sw_filt">Фильтры</button>
+                            <button class="" id="sw_route">Твой маршрут</button>
+                        </div>
+                    <form class="filterform display" id="filterform">
+                        <div id="filterContainer" class="sidebar">
+                            <!-- Tags will be dynamically inserted here -->
+                        </div>
+                    </form>
+                    <form class="routeform" id="routeform">
+                        <button id="filters_clear" type="button">Сброс</button>
+                        <label class="namelabel">Введите название маршрута</label>
+                        <input type="text" name="">
+                        <ul>
+                            <li><label><input type="checkbox" name=""><span></span><span class="checkbox-label">Место с длинным названием</span></label></li>
+                            <li><label><input type="checkbox" name=""><span></span><span class="checkbox-label">Место</span></label></li>
+                            <li><label><input type="checkbox" name=""><span></span><span class="checkbox-label">Место с длинным названием</span></label></li>
+                        </ul>
+                        <button>Создать</button>
+                    </form>
+                </div>
+            </div>
+            <div class="container" id="container">
+                <div class="search">
+                    <img src="images/search.png" oncontextmenu="return false;">
+                    <input type="search" name="search" id="searchInput" placeholder="Давайте поищем что-нибудь интересное">
+                    <ul id="suggestionsList"></ul>
+                    <button class="search-btn">Найти</button>
+                    <button class="create" id="create">Создать маршрут</button>
+                </div>
+                <div id="cards-container"></div>
+
+                <!-- <div class="item">
+                    <div class="top">
+                        <div class="image-container">
+                            <img class="item_img" src="images/bg2.jpg" alt="Example Place">
+                            <button class="prev" onclick="changeImage(event, -1)">&#10094;</button>
+                            <button class="next" onclick="changeImage(event, 1)">&#10095;</button>
+                        </div>
+                        <button class="imgbutt favourite display" id="favourite">
+                            <img src="images/heart1.svg" alt="">
+                        </button>
+                        <button class="imgbutt add_to_route" id="add_to_route">
+                            <img src="images/heart.svg" alt="">
+                        </button>
+                        <div class="info">
+                            <h1 class="Name" id="Name">Example Name</h1>
+                            <p>This is a description of the example place. This is a description of the example place. This is a description of the example place. This is a description of the example place. This is a description of the example place. This is a description of the example place. This is a description of the example place.</p>
+                            <div class="bottom">
+                                <h1>4.5</h1>
+                                <div class="stars">
+                                    <ul>
+                                        <li><button class="star rated"></button></li>
+                                        <li><button class="star rated"></button></li>
+                                        <li><button class="star rated"></button></li>
+                                        <li><button class="star rated"></button></li>
+                                        <li><button class="star rated"></button></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="circles">
+                            <a href="#" class="map" target="_blank"><img src="images/pin.png" alt=""></a>
+                            <a href="#" class="map" target="_blank"><img src="images/internet.svg" alt=""></a>
+                            <a href="#" class="map" target="_blank"><img src="images/phone.svg" alt=""></a>
+                        </div>
+                    </div>
+                    <div class="tags">
+                        <ul>
+                            <li><a href="#">Tag1</a></li>
+                            <li><a href="#">Tag2</a></li>
+                            <li><a href="#">Tag3</a></li>
+                        </ul>
+                    </div>
+                </div> -->
+
+                <!-- <div class="item route">
+                    <div class="top">
+                        <div class="image-container">
+                            <img class="item_img" src="images/bg2.jpg" alt="Example Place">
+                            <button class="prev" onclick="changeImage(event, -1)">&#10094;</button>
+                            <button class="next" onclick="changeImage(event, 1)">&#10095;</button>
+                        </div>
+                        <button class="imgbutt favourite display" id="favourite">
+                            <img src="images/heart.svg" alt="">
+                        </button>
+                        <button class="imgbutt add_to_route" id="add_to_route">
+                            <img src="images/heart.svg" alt="">
+                        </button>
+                        <div class="info">
+                            <h1 class="Name">Мой самый лучший тур по всему КР</h1>
+                            <p>Список мест для посещения:</p>
+                            <ul class="place_list">
+                                <li><button type="button" id="">Парк победы</button></li>
+                                <li><button type="button" id="">Бурана</button></li>
+                                <li><button type="button" id="">Очень длинный при длинный прям длиннющий Парк победы</button></li>
+                                <li><button type="button" id="">Парк победы</button></li>
+                                <li><button type="button" id="">Парк победы</button></li>
+                            </ul>
+                            <div class="bottom">
+                                <h1>4.5</h1>
+                                <div class="stars">
+                                    <ul>
+                                        <li><button class="star rated"></button></li>
+                                        <li><button class="star rated"></button></li>
+                                        <li><button class="star rated"></button></li>
+                                        <li><button class="star rated"></button></li>
+                                        <li><button class="star rated"></button></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="circles">
+                            <a href="#" class="map" target="_blank"><img src="images/internet.svg" alt=""></a>
+                            <a href="#" class="map" target="_blank"><img src="images/phone.svg" alt=""></a>
+                        </div>
+                    </div>
+                    <div class="tags">
+                        <ul>
+                            <li><a href="#">Tag1</a></li>
+                            <li><a href="#">Tag2</a></li>
+                            <li><a href="#">Tag3</a></li>
+                        </ul>
+                    </div>
+                </div> -->
+
+                <button class="more places-more" id="load-more">Ещё</button>
+            </div>
+        </div>
+    </main>
+    <div class="desc">
+        <div class="im-cont left_img ornd"><img class="orn" src="images/orn2.png" oncontextmenu="return false;"></div>
+        <div class="im-cont right_img ornd"><img class="orn" src="images/orn2.png" oncontextmenu="return false;"></div>
+        <h1>О сайте</h1>
+        <p>Наш сайт призван вдохновить людей, помочь им открыть новые горизонты и насытить свою жизнь яркими впечатлениями. Наша платформа станет надежным гидом на пути к новым открытиям и неизведанным уголкам. В тоже время наша платформа способствует повышению интереса к региону и стране, привлечению туристов, способствуя экономическому росту региона.</p>
+        <div id="butt_arr">
+            <div class="im-cont"><img class="arr_dwn" src="images/arr_dwn1.png" oncontextmenu="return false;"></div>
+            <button id="Start">Начать</button>
+        </div>
+    </div>
+    <footer>
+        <img class="logo_img" src="images/LOGO2.png" oncontextmenu="return false;">
+        <div class="contacts">
+            <h2>Наши контакты</h2>
+            <div class="dbl">
+                <div class="pline">
+                    <p>Почта:</p>
+                    <p>телеграм группа: </p>
+                </div>
+                <div class="pline">
+                    <p>open.up.this.world@gmail.com</p>
+                    <a href="https://t.me/Otkroy_m1r" target=”_blank”>https://t.me/Otkroy_m1r</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+    <!-- Registration Popup -->
+    <div id="registerPopup" class="popup">
+        <div class="popup-content">
+            <span class="close">&times;</span>
+            <form id="registerForm">
+                <h2>Регистрация</h2>
+                <label for="reg_login">Логин:</label>
+                <input type="text" id="reg_login" name="reg_login" required>
+                <label for="reg_mail">Почта:</label>
+                <input type="email" id="reg_mail" name="reg_mail" required>
+                <label for="reg_pwd">Пароль:</label>
+                <input type="password" id="reg_pwd" name="reg_pwd" required>
+                <label for="reg_confirm_pwd">Повторите пароль:</label>
+                <input type="password" id="reg_confirm_pwd" name="reg_confirm_pwd" required>
+                <div class="error-message" style="color: red;"></div> <!-- Error message container -->
+                <input class="submit" type="submit" value="Зарегистрироваться">
+            </form>
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,9 @@
+<svg version="1.2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 116 110" width="116" height="110">
+	<title>star-icon</title>
+	<defs>
+		<image  width="116" height="110" id="img1" href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAHQAAABuAQMAAADMGaWZAAAAAXNSR0IB2cksfwAAAAZQTFRFAAAA8ssFS0PkewAAAAJ0Uk5TAP9bkSK1AAABa0lEQVR4nNWUUUrEMBCG598tbH3qHkCwN3GP4k22vYkXEdybWPBVqA9il7rWJDNJZlJ8EAQxUJYPZpJvktkB8bq7518Ij3vLU20Yc2V4O28M794tNyMK7jvNN0+ng+bbx6HVfOwsL/S6V4xPOteWL5Xi7QctG8W7yXIzpkzRIWLBzCwI0SNiIYie5cV9LAjRIRHMzIIQPRIhiJ5hrxdTo44IIuqIIOLxciDidrIhUjgnIIVzAlI4JyCeJgnI4aFE5PCQABXuE6DCfQJUuE+ADncJ0OEuYcX+qjXHYngNBZ9W+1vuwXcbF6xfyc43vFVclwrhLb/jc72qn3QBJQ8tSBfg76+8T819B9IFwL5HyeF9VAGuBUFKuGTXEOv3VsIlD63nXABz2T+ZXQeDVAElg36D8wX8Mcv/6b9xapgf8HI1GR5a1yWKEUcws5+Vxy6zn0rNmJhH5+InZmAezc2L8JuM/ln44cA+189EX46Ay9/41l4wAAAAAElFTkSuQmCC"/>
+	</defs>
+	<style>
+	</style>
+	<use id="Background" href="#img1" x="0" y="0"/>
+</svg>
