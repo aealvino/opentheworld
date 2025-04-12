@@ -890,34 +890,43 @@ document.addEventListener('click', function (event) {
     
     async function filterPlaces() {
         let data = await fetchData('/places');
-
+    
         if (selectedTagIds.length > 0) {
             data = data.filter(place => {
                 const placeTagIds = place.Tags.map(tag => tag.tag_id);
                 return selectedTagIds.every(tagId => placeTagIds.includes(tagId));
             });
         }
-
+    
+        if (filterFavorites) {
+            const favIds = userFavorites.map(fav => fav.place_id);
+            const liked = data.filter(place => favIds.includes(place.id));
+            const unliked = data.filter(place => !favIds.includes(place.id));
+            data = [...liked, ...unliked];
+        }
+    
         currentData = data;
         currentPlacesIndex = 0;
-        cardsContainer.innerHTML = ''; // Очистка старых карточек мест
-        loadMorePlaces(); // Обновление карточек мест
+        cardsContainer.innerHTML = '';
+        loadMorePlaces();
+    
         if (data.length > 0) {
-            scrollToContent(); // Прокрутка к контенту, если есть карточки мест
+            scrollToContent();
         }
-
+    
         if (isCreateButtonClicked) {
             const favButtons = document.querySelectorAll(".favourite");
             favButtons.forEach(button => {
                 button.classList.toggle("display", !button.classList.contains("display"));
             });
-
+    
             const addButtons = document.querySelectorAll(".add_to_route");
             addButtons.forEach(button => {
                 button.classList.toggle("display", !button.classList.contains("display"));
             });
         }
     }
+    
     
     function resetFilters() {
         const checkboxes = document.querySelectorAll('#filterContainer input[type="checkbox"]');
